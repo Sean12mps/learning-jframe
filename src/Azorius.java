@@ -1,18 +1,10 @@
 public class Azorius {
-	
+
 	static PageManager window_pages = new PageManager();
+	static CurrentUser user = new CurrentUser( "" );
 
 	public static void main(String[] args) {
-		
-		window_pages.showPage("login");
-		
-//		submitButton.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				JOptionPane.showMessageDialog( mainWindow, "Eggs are not supposed to be green.");
-//			}  
-//		});
-		
+		window_pages.run( user );
 	}
 
 }

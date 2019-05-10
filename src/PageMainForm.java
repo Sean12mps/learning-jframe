@@ -3,12 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-public class PageLogin extends Page {
+public class PageMainForm extends Page {
 	
-	public String
-	window_title = "Cadbully Shop - Login",
-	window_notice__title_invalid_fields = "Form Error!",
-	window_notice__invalid_fields = "User name / Password is false.";
+	String
+	window_title = "Cadbully Shop - Main Form";
 	 
 	int 
 	window_width = 800,
@@ -16,16 +14,16 @@ public class PageLogin extends Page {
 	
 	JPanel
 	section_head = new JPanel(new FlowLayout()),
-	section_content = new JPanel(new GridLayout(2,2)),
+	section_content = new JPanel(new FlowLayout()),
 	section_footer = new JPanel(new FlowLayout());
 	
 	JLabel 
-	label_title = new JLabel( "Sign In" ),
+	label_title = new JLabel( "Ini admin" ),
 	label_email = new JLabel( "Email" ),
 	label_password = new JLabel( "Password" );
 	
 	JButton 
-	button_login = new JButton( "Login" ),
+	button_logout = new JButton( "Log Out" ),
 	button_register = new JButton( "Register" );
 	
 	JTextField 
@@ -34,10 +32,8 @@ public class PageLogin extends Page {
 	JPasswordField 
 	field_password = new JPasswordField();
 	
-	public PageLogin() {
-		
-		System.out.println("Creating Page Login.");
-		
+	public PageMainForm() {
+		System.out.println("Creating Page Main Form.");
 		setupFrame();
 		
 		setupFonts();
@@ -47,7 +43,6 @@ public class PageLogin extends Page {
 		setupComponents();
 		
 		setupListeners();
-		
 	}
 	
 	public void setupFrame() {
@@ -72,34 +67,20 @@ public class PageLogin extends Page {
 	public void setupComponents() {
 
 		section_head.add(label_title);
-
-		section_content.add(label_email);
-		section_content.add(field_email);
-		section_content.add(label_password);
-		section_content.add(field_password);
-
-		section_footer.add(button_register);
-		section_footer.add(button_login);
+		section_head.add(button_logout);
 		
 		frame.add(section_head);
-		frame.add(section_content);
-		frame.add(section_footer);
 		
 	}
 	
 	public void setupListeners() {
 		
-		button_login.addActionListener( new ActionListener() {
+		button_logout.addActionListener( new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				// Check if fields are filled.
-				if ( ! isValidRequiredFields() ) {
-					displayWindowNotice( "invalid_fields" );
-				} else {
-					user_go_to( "mainForm" );
-				}
+				user_go_to( "login" );
 				
 			}
 
@@ -112,28 +93,9 @@ public class PageLogin extends Page {
 		switch ( type ) {
 		
 			case "invalid_fields":
-				JOptionPane.showMessageDialog( frame, 
-					window_notice__invalid_fields, 
-					window_notice__title_invalid_fields, 
-					JOptionPane.WARNING_MESSAGE
-				);
 				break;
 
 		}
-		
-	}
-	
-	public boolean isValidRequiredFields() {
-		
-		boolean valid = false;
-		String userName = field_email.getText();
-		char[] userPass = field_password.getPassword();
-		
-		if ( ! userName.isEmpty() && userPass.length != 0 ) {
-			valid = true;
-		}
-		
-		return valid;
 		
 	}
 	

@@ -2,14 +2,27 @@ import javax.swing.JFrame;
 
 abstract class Page {
 
-	public static JFrame frame;
+	public JFrame frame;
+	public CurrentUser current_user;
+	public PageManager page_manager;
 
-	public void show() {
+	public void setup( PageManager manager ) {
+		page_manager = manager;
+		current_user = page_manager.getUser();
 		frame.setVisible(true);
+	}
+
+	public void hide() {
+		frame.setVisible(false);
 	}
 
 	public JFrame getFrame() {
 		 return frame;
+	}
+	
+	public void user_go_to( String page_id ) {
+		current_user.set_current_page( page_id );
+		page_manager.reload();
 	}
 
 }
