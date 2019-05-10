@@ -5,82 +5,129 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 public class PageLogin extends Page {
 	
-	JPanel panel1, panel2, panel3;
-	JLabel labelTitle, emailLable, passLabel;
-	JTextField emailTextField;
-	JPasswordField passTextField;
-	JButton login, register;
+	String
+	window_title = "Cadbully Shop - Login",
+	window_notice__title_invalid_fields = "Form Error!",
+	window_notice__invalid_fields = "User name / Password is false.";
+	 
+	int 
+	window_width = 800,
+	window_height = 600; 
+	
+	JPanel
+	section_head = new JPanel(new FlowLayout()),
+	section_content = new JPanel(new GridLayout(2,2)),
+	section_footer = new JPanel(new FlowLayout());
+	
+	JLabel 
+	label_title = new JLabel( "Sign In" ),
+	label_email = new JLabel( "Email" ),
+	label_password = new JLabel( "Password" );
+	
+	JButton 
+	button_login = new JButton( "Login" ),
+	button_register = new JButton( "Register" );
+	
+	JTextField 
+	field_email = new JTextField();
+	
+	JPasswordField 
+	field_password = new JPasswordField();
 	
 	public PageLogin() {
 		
-		frame = new JFrame( "Login" );
+		setupFrame();
 		
-		frame.setTitle("Cadbully Shop");
+		setupFonts();
 		
-		frame.setSize(360,260);
+		setupColors();
 		
-		frame.setLocationRelativeTo(null);
+		setupComponents();
 		
+		setupListeners();
+	}
+	
+	public void setupFrame() {
+		frame = new JFrame( window_title );
+		frame.setSize( window_width, window_height );
+		frame.setLocationRelativeTo( null );
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		frame.getContentPane().setLayout( new GridLayout( 3, 1 ) );
+	}
+	
+	public void setupFonts() {
+		label_title.setFont( new Font( "Sans Serif", Font.BOLD, 25 ) );
+		label_email.setFont( new Font( "arial", Font.ITALIC,25 ) );
+	}
+	
+	public void setupColors() {
+		section_head.setBackground( Color.BLUE );
+		section_content.setBackground( Color.RED );
+		section_footer.setBackground( Color.CYAN );
+	}
+	
+	public void setupComponents() {
 
-		frame.getContentPane().setLayout( new GridLayout(3,1));
+		section_head.add(label_title);
+
+		section_content.add(label_email);
+		section_content.add(field_email);
+		section_content.add(label_password);
+		section_content.add(field_password);
+
+		section_footer.add(button_register);
+		section_footer.add(button_login);
 		
-		panel1 = new JPanel(new FlowLayout());
-		labelTitle = new JLabel("Sign In");
-		labelTitle.setFont(new Font("Sans Serif", Font.BOLD, 25));
+		frame.add(section_head);
+		frame.add(section_content);
+		frame.add(section_footer);
 		
-		panel1.setBackground(Color.BLUE);
-		panel1.add(labelTitle);
+	}
+	
+	public void setupListeners() {
 		
-		panel2 = new JPanel(new GridLayout(2,2));
-		emailLable = new JLabel("Email");
-		
-		panel2.add(emailLable);
-		panel2.setBackground(Color.RED);
-		
-		emailTextField = new JTextField();
-		emailTextField.setFont(new Font("arial", Font.ITALIC,25));;
-		
-		panel2.add(emailTextField);
-		
-		passLabel = new JLabel("Password");
-		panel2.add(passLabel);
-		
-		passTextField = new JPasswordField();
-		panel2.add(passTextField);
-		
-		panel3 = new JPanel(new FlowLayout());
-		register = new JButton("Register");
-		panel3.add(register);
-		panel3.setBackground(Color.CYAN);
-		
-		login = new JButton("Login");
-		panel3.add(login);
-		
-		login.addActionListener( new ActionListener() {
+		button_login.addActionListener( new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-//				dispose();
-				String userName = emailTextField.getText();
-				char[] userPass = passTextField.getPassword();
-				boolean valid = false;
 				
-				if (!userName.isEmpty()) {
-					valid = true;
-				}
+				// Check if fields are filled.
+				if ( ! isValidRequiredFields() ) displayWindowNotice( "invalid_fields" );
 				
-				if (userPass.length != 0) {
-					valid = true;
-				}
-				
-		
-				}
+			}
 
-		});
+		} );
 		
-		frame.add(panel1);
-		frame.add(panel2);
-		frame.add(panel3);
 	}
+	
+	public void displayWindowNotice( String type ) {
+		
+		switch ( type ) {
+		
+			case "invalid_fields":
+				JOptionPane.showMessageDialog( frame, 
+					window_notice__invalid_fields, 
+					window_notice__title_invalid_fields, 
+					JOptionPane.WARNING_MESSAGE
+				);
+				break;
+
+		}
+		
+	}
+	
+	public boolean isValidRequiredFields() {
+		
+		boolean valid = false;
+		String userName = field_email.getText();
+		char[] userPass = field_password.getPassword();
+		
+		if ( ! userName.isEmpty() && userPass.length != 0 ) {
+			valid = true;
+		}
+		
+		return valid;
+		
+	}
+	
 }
