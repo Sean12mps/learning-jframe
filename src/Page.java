@@ -3,12 +3,15 @@ import javax.swing.JFrame;
 abstract class Page {
 
 	public JFrame frame;
-	public CurrentUser current_user;
-	public PageManager page_manager;
+	public PageManager pageManager;
+	public Session currentSession;
 
 	public void setup( PageManager manager ) {
-		page_manager = manager;
-		current_user = page_manager.getUser();
+		pageManager = manager;
+		currentSession = pageManager.getCurrentSession();
+	}
+
+	public void show() {
 		frame.setVisible(true);
 	}
 
@@ -21,8 +24,12 @@ abstract class Page {
 	}
 	
 	public void user_go_to( String page_id ) {
-		current_user.set_current_page( page_id );
-		page_manager.reload();
+		currentSession.setCurrentPage( page_id );
+		pageManager.reload();
+	}
+
+	public Session getCurrentSession() {
+		return currentSession;
 	}
 
 }

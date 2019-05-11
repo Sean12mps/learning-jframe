@@ -1,10 +1,17 @@
 public class Azorius {
-
-	static PageManager window_pages = new PageManager();
-	static CurrentUser user = new CurrentUser( "" );
+	
+	static User currentUser = new User();
+	
+	static Session currentSession = new Session(currentUser);
+	
+	static PageManager windowPages = new PageManager();
 
 	public static void main(String[] args) {
-		window_pages.run( user );
+		
+		windowPages.setCurrentSession(currentSession);
+		
+		windowPages.run();
+		
 	}
 
 }

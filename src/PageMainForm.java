@@ -33,7 +33,6 @@ public class PageMainForm extends Page {
 	field_password = new JPasswordField();
 	
 	public PageMainForm() {
-		System.out.println("Creating Page Main Form.");
 		setupFrame();
 		
 		setupFonts();

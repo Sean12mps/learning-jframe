@@ -36,8 +36,6 @@ public class PageLogin extends Page {
 	
 	public PageLogin() {
 		
-		System.out.println("Creating Page Login.");
-		
 		setupFrame();
 		
 		setupFonts();
@@ -98,6 +96,7 @@ public class PageLogin extends Page {
 				if ( ! isValidRequiredFields() ) {
 					displayWindowNotice( "invalid_fields" );
 				} else {
+					getCurrentSession().login();
 					user_go_to( "mainForm" );
 				}
 				
