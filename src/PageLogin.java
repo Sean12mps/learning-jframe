@@ -16,8 +16,10 @@ public class PageLogin extends Page {
 	
 	JPanel
 	section_head = new JPanel(new FlowLayout()),
-	section_content = new JPanel(new GridLayout(2,2)),
-	section_footer = new JPanel(new FlowLayout());
+	section_content = new JPanel(new GridLayout(2,1)),
+	section_footer = new JPanel(new FlowLayout()),
+	field_group_email = new JPanel(new FlowLayout()),
+	field_group_password = new JPanel(new FlowLayout());
 	
 	JLabel 
 	label_title = new JLabel( "Sign In" ),
@@ -57,31 +59,51 @@ public class PageLogin extends Page {
 	}
 	
 	public void setupFonts() {
-		label_title.setFont( new Font( "Sans Serif", Font.BOLD, 25 ) );
-		label_email.setFont( new Font( "arial", Font.ITALIC,25 ) );
+		label_title.setFont( new Font( "Courier", Font.BOLD, 45 ) );
+		label_email.setFont( new Font( "Courier", Font.BOLD,20 ) );
+		label_password.setFont( new Font( "Courier", Font.BOLD,20 ) );
 	}
 	
 	public void setupColors() {
-		section_head.setBackground( Color.BLUE );
-		section_content.setBackground( Color.RED );
-		section_footer.setBackground( Color.CYAN );
+		section_head.setBackground( Color.decode("#BFDCDE") );
+		section_content.setBackground( Color.decode("#BFDCDE") );
+		section_footer.setBackground( Color.decode("#BFDCDE") );
+		field_group_email.setBackground( Color.decode("#BFDCDE") );
+		field_group_password.setBackground( Color.decode("#BFDCDE") );
 	}
 	
 	public void setupComponents() {
 
-		section_head.add(label_title);
+		section_head.add( label_title );
 
-		section_content.add(label_email);
-		section_content.add(field_email);
-		section_content.add(label_password);
-		section_content.add(field_password);
+		label_email.setPreferredSize( new Dimension ( 120, 24 ) );
+		field_email.setPreferredSize( new Dimension ( 120, 24 ) );
+		label_password.setPreferredSize( new Dimension ( 120, 24 ) );
+		field_password.setPreferredSize( new Dimension ( 120, 24 ) );
 
-		section_footer.add(button_register);
+
+		field_group_email.add( label_email );
+		field_group_email.add( field_email );
+		field_group_password.add( label_password );
+		field_group_password.add( field_password );
+		
+		section_content.add( field_group_email );
+		section_content.add( field_group_password );
+		
+//		section_content.add(new JLabel());
+//		section_content.add(label_email);
+//		section_content.add(field_email);
+//		section_content.add(new JLabel());
+//		section_content.add(new JLabel());
+//		section_content.add(label_password);
+//		section_content.add(field_password);
+
+		section_footer.add( button_register );
 		section_footer.add(button_login);
 		
-		frame.add(section_head);
-		frame.add(section_content);
-		frame.add(section_footer);
+		frame.add( section_head );
+		frame.add( section_content );
+		frame.add( section_footer );
 		
 	}
 	
@@ -102,7 +124,22 @@ public class PageLogin extends Page {
 				
 			}
 
-		} );
+		});
+		
+		button_register.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if ( ! isValidRequiredFields() ) {
+					displayWindowNotice( "invalid_fields" );
+				} else {
+					getCurrentSession().login();
+					user_go_to( "login" );
+				
+				}
+			}
+		});		
 		
 	}
 	

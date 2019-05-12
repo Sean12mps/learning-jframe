@@ -11,6 +11,7 @@ public class PageManager {
 	public PageManager() {
 		addPage( "login", new PageLogin() );
 		addPage( "mainForm", new PageMainForm() );
+		addPage( "RegisterForm", new RegisterForm() );
 	}
 	
 	public void addPage( String pageID, Page page ) {

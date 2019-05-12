@@ -5,6 +5,8 @@ public class Azorius {
 	static Session currentSession = new Session(currentUser);
 	
 	static PageManager windowPages = new PageManager();
+	
+	// kenapa pakai static? //
 
 	public static void main(String[] args) {
 		
