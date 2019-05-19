@@ -1,38 +1,18 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.Toolkit;
-import java.awt.Window.Type;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.Font;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
-import javax.swing.JSplitPane;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.CardLayout;
-import net.miginfocom.swing.MigLayout;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.Window.Type;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JTextField;
-import java.awt.Panel;
-import java.awt.Label;
-import java.awt.TextField;
-import java.awt.Button;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class UI_Login {
 
