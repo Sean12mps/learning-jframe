@@ -32,6 +32,21 @@ public class PageMainForm extends Page {
 	JPasswordField 
 	field_password = new JPasswordField();
 	
+	JDesktopPane
+	store_desktop_pane = new JDesktopPane();
+	
+	JMenuBar
+	menubar = new JMenuBar();
+	
+	JMenu
+	menu = new JMenu("Store");
+	
+	JMenuItem
+	item_ourproduct = new JMenuItem("Our products"),
+	item_Cart = new JMenuItem(),
+	item_Hampers = new JMenuItem(),
+	item_about = new JMenuItem();
+	
 	public PageMainForm() {
 		setupFrame();
 		
@@ -58,9 +73,9 @@ public class PageMainForm extends Page {
 	}
 	
 	public void setupColors() {
-		section_head.setBackground( Color.BLUE );
-		section_content.setBackground( Color.RED );
-		section_footer.setBackground( Color.CYAN );
+		section_head.setBackground( Color.WHITE );
+		section_content.setBackground( Color.WHITE );
+		section_footer.setBackground( Color.WHITE );
 	}
 	
 	public void setupComponents() {

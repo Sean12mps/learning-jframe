@@ -6,13 +6,14 @@ public class Azorius {
 	
 	static PageManager windowPages = new PageManager();
 	
-	// kenapa pakai static? //
 
 	public static void main(String[] args) {
 		
 		windowPages.setCurrentSession(currentSession);
 		
 		windowPages.run();
+		
+		Connect connect = new Connect();
 		
 	}
 

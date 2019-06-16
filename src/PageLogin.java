@@ -135,7 +135,7 @@ public class PageLogin extends Page {
 					displayWindowNotice( "invalid_fields" );
 				} else {
 					getCurrentSession().login();
-					user_go_to( "login" );
+					user_go_to( "Login" );
 				
 				}
 			}
@@ -162,10 +162,10 @@ public class PageLogin extends Page {
 	public boolean isValidRequiredFields() {
 		
 		boolean valid = false;
-		String userName = field_email.getText();
+		String userEmail = field_email.getText();
 		char[] userPass = field_password.getPassword();
 		
-		if ( ! userName.isEmpty() && userPass.length != 0 ) {
+		if ( ! userEmail.isEmpty() && userPass.length != 0 ) {
 			valid = true;
 		}
 		
