@@ -18,7 +18,7 @@ public class RegisterForm extends Page{
 	
 	JPanel
 	section_head = new JPanel(new FlowLayout()),
-	section_content = new JPanel(new GridLayout(4,2)),
+	section_content = new JPanel(new GridLayout(6,2)),
 	section_content1 = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 12)),
 	section_footer = new JPanel(new FlowLayout()),
 	field_group_name = new JPanel(new FlowLayout()),
@@ -149,6 +149,15 @@ public class RegisterForm extends Page{
 			}
 
 		} );
+		
+		button_submit.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		
 	 }
 	

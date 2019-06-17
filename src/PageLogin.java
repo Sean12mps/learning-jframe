@@ -131,17 +131,13 @@ public class PageLogin extends Page {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if ( ! isValidRequiredFields() ) {
-					displayWindowNotice( "invalid_fields" );
-				} else {
-					getCurrentSession().login();
-					user_go_to( "Login" );
+					user_go_to( "RegisterForm" );
 				
 				}
-			}
-		});		
-		
-	}
+			
+		});
+	 }
+				
 	
 	public void displayWindowNotice( String type ) {
 		
