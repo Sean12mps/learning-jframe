@@ -5,7 +5,7 @@ import java.time.Month;
 import java.time.Year;
 import javax.swing.*;
 
-import net.miginfocom.layout.Grid;
+//import net.miginfocom.layout.Grid;
 
 public class RegisterForm extends Page{
 
@@ -60,6 +60,12 @@ public class RegisterForm extends Page{
 	button_submit = new JButton("Submit");
 	
 	public RegisterForm() {
+		
+		setupFrame();
+		setupFont();
+		setupColors();
+		setupComponents();
+		setupListeners();
 		
 	}
 	
